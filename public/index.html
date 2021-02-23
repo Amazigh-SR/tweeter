@@ -28,6 +28,9 @@
     <!-- Header CSS -->
     <link rel="stylesheet" href="./styles/header.css" />
 
+    <!-- new-tweet CSS -->
+    <link rel="stylesheet" href="./styles/new-tweet.css" />
+
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -55,15 +58,17 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim quos at
-      laudantium sequi maiores quasi non quis commodi veniam, dicta vitae
-      adipisci natus facilis sunt quas. Corporis error maxime explicabo! Lorem
-      ipsum dolor sit amet consectetur adipisicing elit. Maiores, porro possimus
-      at magnam veritatis magni nulla, alias illo natus, numquam quam velit a
-      eum doloremque eos omnis explicabo facilis ex ipsa voluptatibus rem
-      doloribus corrupti dolorem? Quae non voluptatem nam placeat architecto
-      iste necessitatibus voluptas culpa harum consequatur ut qui tempora, saepe
-      nesciunt. Sint velit quis corrupti hic similique neque nostrum possimus
+      <section class="new-tweet">
+        <h2>Compose Tweet</h2>
+        <form method="POST" action="/tweets">
+          <label for="tweet-text">What are you humming about?</label>
+          <textarea name="text" id="tweet-text"></textarea>
+          <div>
+            <button type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
     </main>
   </body>
 </html>
