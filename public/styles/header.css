@@ -1,0 +1,23 @@
+header {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5em;
+  border: 1px black solid;
+  background-color: #4095d6;
+  background-image: url("https://www.transparenttextures.com/patterns/blu-stripes.png");
+}
+
+h2 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  color: white;
+}
+
+#user-name {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+}
