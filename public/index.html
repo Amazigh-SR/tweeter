@@ -31,6 +31,9 @@
     <!-- new-tweet CSS -->
     <link rel="stylesheet" href="./styles/new-tweet.css" />
 
+    <!-- new-tweet CSS -->
+    <link rel="stylesheet" href="./styles/tweet.css" />
+
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -52,7 +55,7 @@
         <span id="arrow">⇣</span>
       </div>
     </nav>
-    <header>
+    <header id="profile">
       <div>
         <img src="/images/profile-hex.png" />
       </div>
@@ -77,6 +80,22 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+
+      <section id="list-of-tweets">
+        <article class="tweet">
+          <header>
+            <div class="identification">
+              <span> 🎶 Newton</span>
+              <span id="reply-username"> @SirIsaac</span>
+            </div>
+            <p>Hello, this is a tweet message</p>
+          </header>
+          <footer>
+            <span>10 days ago</span>
+            <span id="tweet-icons"> ⚑ ❄︎ ❤︎</span>
+          </footer>
+        </article>
       </section>
     </main>
   </body>
