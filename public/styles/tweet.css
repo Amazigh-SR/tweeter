@@ -45,10 +45,14 @@ article.tweet header {
 article.tweet header p {
   border-bottom: 2px solid black;
   border-width: medium;
+  margin-bottom: 0px;
+  padding-bottom: 20px;
 }
 
 article.tweet:hover {
   box-shadow: #4056a1 4px 4px;
+  filter: drop-shadow(0.2px 0.2px 0 black);
+  -webkit-filter: drop-shadow(0.2px 0.2px 0 black);
 }
 
 article.tweet:hover #reply-username {
