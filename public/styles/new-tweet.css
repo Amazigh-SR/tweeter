@@ -20,7 +20,7 @@
 }
 
 .counter {
-  font-family: "bungee";
+  font-family: "bungee", sans-serif;
   color: #4056a1;
 }
 
@@ -28,7 +28,7 @@ button {
   border: none;
   background-color: #4056a1;
   color: white;
-  font-family: "bungee";
+  font-family: "bungee", sans-serif;
 }
 
 .container h2 {
