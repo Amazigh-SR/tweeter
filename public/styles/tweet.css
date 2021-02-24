@@ -1,0 +1,56 @@
+#list-of-tweets {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tweet {
+  border: 2px solid black;
+  border-width: medium;
+  width: 600px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+article.tweet {
+  display: flex;
+  flex-direction: column;
+}
+
+article.tweet header {
+  display: flex;
+  flex-direction: column;
+}
+
+.identification {
+  display: flex;
+  justify-content: space-between;
+}
+
+#list-of-tweets footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+#tweet-icons {
+  color: #4056a1;
+}
+
+#reply-username {
+  display: none;
+}
+
+article.tweet header p {
+  border-bottom: 2px solid black;
+  border-width: medium;
+}
+
+article.tweet:hover {
+  box-shadow: #4056a1 4px 4px;
+}
+
+article.tweet:hover #reply-username {
+  display: block;
+}
