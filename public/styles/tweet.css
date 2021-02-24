@@ -12,6 +12,7 @@
   margin-top: 30px;
   margin-bottom: 30px;
   padding: 10px;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 article.tweet {
@@ -32,13 +33,14 @@ article.tweet header {
 #list-of-tweets footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-#tweet-icons {
+.tweet-icons {
   color: #4056a1;
 }
 
-#reply-username {
+.reply-username {
   display: none;
 }
 
@@ -55,6 +57,22 @@ article.tweet:hover {
   -webkit-filter: drop-shadow(0.2px 0.2px 0 black);
 }
 
-article.tweet:hover #reply-username {
+article.tweet:hover .reply-username {
   display: block;
+}
+
+.avatar-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-logo {
+  height: 40px;
+  width: 40px;
+  margin-right: 7px;
+}
+
+.time-stamp {
+  font-size: 18px;
 }
