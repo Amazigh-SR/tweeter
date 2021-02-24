@@ -9,8 +9,8 @@
   border: none;
   border-bottom: 3px solid black;
   width: 600px;
-  outline: none;
-  height: 35px;
+  /* outline: none; */
+  /* height: 35px; */
   background-color: #f4f1ec;
 }
 
