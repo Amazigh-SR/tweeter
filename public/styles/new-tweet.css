@@ -35,3 +35,22 @@ button {
   color: #4056a1;
   font-weight: bold;
 }
+
+.error-message {
+  width: 600px;
+  /* text-align: center; */
+  margin: auto;
+  margin-top: 20px;
+  display: block;
+  background-color: #ffd2d2;
+  color: #d8000c;
+  font-size: 32px;
+  padding: 15px;
+  border-radius: 10px;
+  transition: all 2s linear;
+}
+
+.invisible {
+  display: none;
+  opacity: 0;
+}
