@@ -71,6 +71,9 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <p class="error-message invisible">
+        ✘ Error Message - <span class="error-type"></span>
+      </p>
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form method="POST" action="/tweets" id="form">
@@ -86,7 +89,6 @@
           </div>
         </form>
       </section>
-
       <section id="list-of-tweets"></section>
     </main>
   </body>
