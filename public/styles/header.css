@@ -22,3 +22,14 @@ h2 {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 700;
 }
+
+@media only screen and (min-width: 1024px) {
+  #profile {
+    margin-top: 60px;
+    margin-left: 60px;
+    width: 40%;
+    border-radius: 15px;
+    border: #4056a1 2px solid;
+    border-width: thick;
+  }
+}
