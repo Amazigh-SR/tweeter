@@ -55,10 +55,36 @@ const timeDifference = function(current, previous) {
   }
 };
 
+const createTweetElement = function(data) {
+  const $tweet = $(`
+  <article class="tweet">
+    <header>
+      <div class="identification">
+        <div class = "avatar-details"><img class="avatar-logo"  src = "${
+  data.user.avatars
+}"/><span> ${data.user.name}</span></div>
+        <span class="reply-username"> ${data.user.handle}</span>
+      </div>
+      <p>${data.content.text}</p>
+    </header>
+    <footer>
+      <span class="time-stamp">${timeDifference(
+    Date.now(),
+    data.created_at
+  )}</span>
+      <span class="tweet-icons"> ⚑ ❄︎ ❤︎</span>
+    </footer>
+  </article>
+  `);
+  return $tweet;
+};
+
 //DOM related work - creation of a tweet tempate
 $(document).ready(function() {
   //RenderTweets function loops through array of data
+
   const renderTweets = function(tweets) {
+    $("#list-of-tweets").empty();
     // loops through tweets
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
@@ -68,29 +94,25 @@ $(document).ready(function() {
     // takes return value and appends it to the tweets container
   };
 
-  const createTweetElement = function(data) {
-    const $tweet = $(`
-    <article class="tweet">
-      <header>
-        <div class="identification">
-          <div class = "avatar-details"><img class="avatar-logo"  src = "${
-  data.user.avatars
-}"/><span> ${data.user.name}</span></div>
-          <span class="reply-username"> ${data.user.handle}</span>
-        </div>
-        <p>${data.content.text}</p>
-      </header>
-      <footer>
-        <span class="time-stamp">${timeDifference(
-    Date.now(),
-    data.created_at
-  )}</span>
-        <span class="tweet-icons"> ⚑ ❄︎ ❤︎</span>
-      </footer>
-    </article>
-    `);
-    return $tweet;
+  renderTweets(data); // <--- May need to relocate
+
+  //AJAX POST Request Function
+  const pushTweet = function(data) {
+    $.ajax({
+      url: "/tweets",
+      method: "POST",
+      data,
+    }).then((response) => {
+      console.log(response);
+    });
   };
 
-  renderTweets(data);
+  //Form submission handler
+  $("#form").on("submit", function(event) {
+    //prevent the default behavior of the form submission
+    event.preventDefault();
+    const $data = $(this).serialize();
+    pushTweet($data);
+    $(this).children("textarea").val("");
+  });
 });
