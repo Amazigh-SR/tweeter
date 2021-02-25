@@ -29,5 +29,13 @@ body {
 main {
   width: 90%;
   background-color: #f4f1ec;
-  margin: auto;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 1024px) {
+  #non-navbar-content {
+    display: flex;
+    flex-direction: row;
+    margin-top: 120px;
+  }
 }
