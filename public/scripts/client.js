@@ -3,32 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-//Dummy Data
-const data = [
-  {
-    user: {
-      name: "Newton",
-      avatars: "https://i.imgur.com/73hZDYK.png",
-      handle: "@SirIsaac",
-    },
-    content: {
-      text:
-        "If I have seen further it is by standing on the shoulders of giants",
-    },
-    created_at: 1461116232227,
-  },
-  {
-    user: {
-      name: "Descartes",
-      avatars: "https://i.imgur.com/nlhLi3I.png",
-      handle: "@rd",
-    },
-    content: {
-      text: "Je pense , donc je suis",
-    },
-    created_at: 1461113959088,
-  },
-];
 
 //Helper function to determine how much time "ago"
 const timeDifference = function(current, previous) {
@@ -55,6 +29,7 @@ const timeDifference = function(current, previous) {
   }
 };
 
+//Function that generates a tweet tempate
 const createTweetElement = function(data) {
   const $tweet = $(`
   <article class="tweet">
@@ -79,31 +54,29 @@ const createTweetElement = function(data) {
   return $tweet;
 };
 
-//DOM related work - creation of a tweet tempate
+//----------------DOM related work------------------------//
+
 $(document).ready(function() {
   //RenderTweets function loops through array of data
-
   const renderTweets = function(tweets) {
     $("#list-of-tweets").empty();
     // loops through tweets
     for (const tweet of tweets) {
+      // calls createTweetElement for each tweet
       const $tweet = createTweetElement(tweet);
-      $("#list-of-tweets").append($tweet);
+      // takes return value and appends it to the tweets container
+      $("#list-of-tweets").prepend($tweet);
     }
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
   };
 
-  renderTweets(data); // <--- May need to relocate
-
-  //AJAX POST Request Function
+  //AJAX POST Request Function utilized by the form handler below
   const pushTweet = function(data) {
     $.ajax({
       url: "/tweets",
       method: "POST",
       data,
-    }).then((response) => {
-      console.log(response);
+    }).then(() => {
+      loadTweets();
     });
   };
 
@@ -111,8 +84,26 @@ $(document).ready(function() {
   $("#form").on("submit", function(event) {
     //prevent the default behavior of the form submission
     event.preventDefault();
+    //extract the input and convert into key/value pair
     const $data = $(this).serialize();
+    //Ajax POST request
     pushTweet($data);
+    //reset the inputs after submission
     $(this).children("textarea").val("");
   });
+
+  //Get request that fetches the data then renders it
+  const loadTweets = function() {
+    $.ajax({
+      url: "/tweets",
+      method: "GET",
+      dataType: "json",
+      success: (tweets) => {
+        renderTweets(tweets);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  };
 });
