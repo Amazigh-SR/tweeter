@@ -29,7 +29,7 @@ const timeDifference = function(current, previous) {
   }
 };
 
-//Function that generates a tweet tempate
+//Function that generates a tweet tempate with all the necessary classes
 const createTweetElement = function(data) {
   const $article = $("<article>").addClass("tweet"); //1
   const $header = $("<header>"); //2 append to article
@@ -59,7 +59,6 @@ const createTweetElement = function(data) {
 };
 
 //----------------DOM related work------------------------//
-
 $(document).ready(function() {
   //RenderTweets function loops through array of data
   const renderTweets = function(tweets) {
