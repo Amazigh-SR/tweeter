@@ -87,24 +87,26 @@ $(document).ready(function() {
   //Form submission handler
   $("#form").on("submit", function(event) {
     const $input = $(this).children("textarea").val();
-
     if ($input === "") {
       event.preventDefault();
-      alert("You cannot submit an empty message!");
+      $(".error-message").removeClass("invisible");
+      $(".error-type").text("Empty Tweet Submission!");
     } else if ($input.length > 140) {
       event.preventDefault();
-      alert(
-        "Sorry you have exceeded the character limit for a single message!"
-      );
+      $(".error-message").removeClass("invisible");
+      $(".error-type").text("Exceeded Chars Limit!");
     } else {
       //prevent the default behavior of the form submission
       event.preventDefault();
+      //Add back the invisible class
+      $(".error-message").addClass("invisible");
       //extract the input and convert into key/value pair
       const $data = $(this).serialize();
       //Ajax POST request
       pushTweet($data);
       //reset the inputs after submission
       $(this).children("textarea").val("");
+      $(".counter").text("140");
     }
   });
 
