@@ -31,27 +31,31 @@ const timeDifference = function(current, previous) {
 
 //Function that generates a tweet tempate
 const createTweetElement = function(data) {
-  const $tweet = $(`
-  <article class="tweet">
-    <header>
-      <div class="identification">
-        <div class = "avatar-details"><img class="avatar-logo"  src = "${
-  data.user.avatars
-}"/><span> ${data.user.name}</span></div>
-        <span class="reply-username"> ${data.user.handle}</span>
-      </div>
-      <p>${data.content.text}</p>
-    </header>
-    <footer>
-      <span class="time-stamp">${timeDifference(
-    Date.now(),
-    data.created_at
-  )}</span>
-      <span class="tweet-icons"> ⚑ ❄︎ ❤︎</span>
-    </footer>
-  </article>
-  `);
-  return $tweet;
+  const $article = $("<article>").addClass("tweet"); //1
+  const $header = $("<header>"); //2 append to article
+  const $divA = $("<div>").addClass("identification"); //3 append to header
+  const $divB = $("<div>").addClass("avatar-details"); //append to divA
+  const $img = $("<img>")
+    .addClass("avatar-logo")
+    .attr("src", data.user.avatars); //Append to div B
+  const $userName = $("<span>").text(data.user.name); //Append to divB
+  const $replyUserName = $("<span>")
+    .addClass("reply-username")
+    .text(data.user.handle); //Append to divA
+  const $content = $("<p>").text(data.content.text); //Append to header
+  const $footer = $("<footer>"); //Append to article
+  const $time = $("<span>")
+    .addClass("time-stamp")
+    .text(timeDifference(Date.now(), data.created_at)); //Append to footer
+  const $icons = $("<span>").addClass("tweet-icons").text("⚑ ❄︎ ❤︎"); //Append to footer
+
+  $divB.append($img, $userName);
+  $divA.append($divB, $replyUserName);
+  $header.append($divA, $content);
+  $footer.append($time, $icons);
+  $article.append($header, $footer);
+
+  return $article;
 };
 
 //----------------DOM related work------------------------//
@@ -82,14 +86,26 @@ $(document).ready(function() {
 
   //Form submission handler
   $("#form").on("submit", function(event) {
-    //prevent the default behavior of the form submission
-    event.preventDefault();
-    //extract the input and convert into key/value pair
-    const $data = $(this).serialize();
-    //Ajax POST request
-    pushTweet($data);
-    //reset the inputs after submission
-    $(this).children("textarea").val("");
+    const $input = $(this).children("textarea").val();
+
+    if ($input === "") {
+      event.preventDefault();
+      alert("You cannot submit an empty message!");
+    } else if ($input.length > 140) {
+      event.preventDefault();
+      alert(
+        "Sorry you have exceeded the character limit for a single message!"
+      );
+    } else {
+      //prevent the default behavior of the form submission
+      event.preventDefault();
+      //extract the input and convert into key/value pair
+      const $data = $(this).serialize();
+      //Ajax POST request
+      pushTweet($data);
+      //reset the inputs after submission
+      $(this).children("textarea").val("");
+    }
   });
 
   //Get request that fetches the data then renders it
