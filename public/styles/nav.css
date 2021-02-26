@@ -17,14 +17,21 @@ nav {
 #write {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 700;
+  text-decoration: none;
 }
 
 #new-tweet {
   display: flex;
   flex-direction: column;
+  color: white;
 }
 
 #arrow {
   align-self: center;
   color: white;
+}
+
+a {
+  text-decoration: none;
+  font-family: "Source Sans Pro", sans-serif;
 }
