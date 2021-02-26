@@ -38,6 +38,7 @@ article.tweet header {
 
 .tweet-icons {
   color: #4056a1;
+  display: none;
 }
 
 .reply-username {
@@ -58,6 +59,10 @@ article.tweet:hover {
 }
 
 article.tweet:hover .reply-username {
+  display: block;
+}
+
+article.tweet:hover .tweet-icons {
   display: block;
 }
 
