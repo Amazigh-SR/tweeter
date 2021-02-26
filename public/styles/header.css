@@ -27,7 +27,8 @@ h2 {
   #profile {
     margin-top: 60px;
     margin-left: 60px;
-    width: 40%;
+    margin-right: 40px;
+    width: calc(40% - 100px);
     border-radius: 15px;
     border: #4056a1 2px solid;
     border-width: thick;
