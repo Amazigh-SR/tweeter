@@ -124,9 +124,24 @@ $(document).ready(function() {
     });
   };
 
-  // ---------- Click Event Listner to hide/unhide new message box (Stretch) -------------------//
+  // --------------------------- (Stretch) -----------------------//
+  //Click Event Listner to hide/unhide new tweet container
   $("#new-tweet-button").on("click", function() {
     $(".new-tweet").slideToggle("fast");
     $("#tweet-text").focus();
+  });
+
+  //Event listener on whether the user is scrolling or not
+  $(window).on("scroll", function(event) {
+    if (window.scrollY > 0) {
+      $("#buttonUp").css("display", "block");
+    } else {
+      $("#buttonUp").css("display", "none");
+    }
+  });
+
+  //Click event listener to send the user back up
+  $("#buttonUp").on("click", function() {
+    window.scrollTo(0, 0);
   });
 });
