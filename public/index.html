@@ -5,7 +5,10 @@
     <title>Tweeter - Home Page</title>
 
     <!-- Metatag ViewPort -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1"
+    />
     <!-- External CSS -->
     <link
       rel="stylesheet"
@@ -57,10 +60,12 @@
     <!-- Top nav bar (fixed) -->
     <nav>
       <span id="logo">tweeter</span>
-      <div id="new-tweet">
-        <span><span id="write">Write</span> a new tweet</span>
-        <span id="arrow"><i class="fas fa-angle-double-down"></i></span>
-      </div>
+      <a href="#" id="new-tweet-button">
+        <div id="new-tweet">
+          <span><span id="write">Write</span> a new tweet</span>
+          <span id="arrow"><i class="fas fa-angle-double-down"></i></span>
+        </div>
+      </a>
     </nav>
     <div id="non-navbar-content">
       <header id="profile">
