@@ -123,4 +123,10 @@ $(document).ready(function() {
       },
     });
   };
+
+  // ---------- Click Event Listner to hide/unhide new message box (Stretch) -------------------//
+  $("#new-tweet-button").on("click", function() {
+    $(".new-tweet").slideToggle("fast");
+    $("#tweet-text").focus();
+  });
 });
