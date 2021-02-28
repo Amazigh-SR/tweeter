@@ -58,19 +58,37 @@ const createTweetElement = function(data) {
   return $article;
 };
 
+//RenderTweets function loops through array of data
+const renderTweets = function(tweets) {
+  $("#list-of-tweets").empty();
+  // loops through tweets
+  for (const tweet of tweets) {
+    // calls createTweetElement for each tweet
+    const $tweet = createTweetElement(tweet);
+    // takes return value and appends it to the tweets container
+    $("#list-of-tweets").prepend($tweet);
+  }
+};
+
+//Get request that fetches the data then renders it
+const loadTweets = function() {
+  $.ajax({
+    url: "/tweets",
+    method: "GET",
+    dataType: "json",
+    success: (tweets) => {
+      renderTweets(tweets);
+    },
+    error: (error) => {
+      console.log(error);
+    },
+  });
+};
+
 //----------------DOM related work------------------------//
 $(document).ready(function() {
-  //RenderTweets function loops through array of data
-  const renderTweets = function(tweets) {
-    $("#list-of-tweets").empty();
-    // loops through tweets
-    for (const tweet of tweets) {
-      // calls createTweetElement for each tweet
-      const $tweet = createTweetElement(tweet);
-      // takes return value and appends it to the tweets container
-      $("#list-of-tweets").prepend($tweet);
-    }
-  };
+  //Fetch the tweets in the DB upon page load/refresh
+  loadTweets();
 
   //AJAX POST Request Function utilized by the form handler below
   const pushTweet = function(data) {
@@ -108,21 +126,6 @@ $(document).ready(function() {
       $(".counter").text("140");
     }
   });
-
-  //Get request that fetches the data then renders it
-  const loadTweets = function() {
-    $.ajax({
-      url: "/tweets",
-      method: "GET",
-      dataType: "json",
-      success: (tweets) => {
-        renderTweets(tweets);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  };
 
   // --------------------------- (Stretch) -----------------------//
   //Click Event Listner to hide/unhide new tweet container
