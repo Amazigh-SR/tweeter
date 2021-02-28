@@ -12,6 +12,7 @@
   /* outline: none; */
   /* height: 35px; */
   background-color: #f4f1ec;
+  word-wrap: normal;
 }
 
 #under-text {
